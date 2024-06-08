@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zenzilla</title>
-    <link rel="icon" href="Logos/logo.jpg" />
-    <link rel="stylesheet" href="style.css">
+    <script src="/src/script.js"></script>
+    <link rel="icon" href="/public/images/logo.jpg" />
+    <link rel="stylesheet" href="/styles/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -18,15 +19,14 @@
     <div class="container">
         <nav>
             <div class="nav-left">
-                <div class="navbar-item">Home</div>
-                <div class="navbar-item">Sessions</div>
-                <div class="navbar-item">Preferences Management</div>
-                <div class="navbar-item">Community</div>
+                <a href="">Home</a>
+                <a href="/pages/Preferences.html">Preferences Management</a>
+                <a href="">Sessions</a>
             </div>
             <div class="nav-right">
                 <button class="sign-in" onclick="showForm('login')">Login</button>
                 <button class="sign-up" onclick="showForm('signup')">Sign up</button>
-                <img class="nav-logo" src="Logos/logo.jpg" alt="Logo">
+                <img class="nav-logo" src="/public/images/logo.jpg" alt="Logo">
             </div>
         </nav>
         <section class="hero-section">
@@ -60,38 +60,6 @@
         </section>
     </div>
 
-    <script>
-        function showForm(formType) {
-            var loginForm = document.getElementById('login-form-container');
-            var signupForm = document.getElementById('signup-form-container');
-            if (formType === 'login') {
-                loginForm.style.display = 'block';
-                signupForm.style.display = 'none';
-            } else {
-                loginForm.style.display = 'none';
-                signupForm.style.display = 'block';
-            }
-        }
-
-        function validateSignupForm() {
-            var email = document.getElementById('signup-email').value;
-            var confirmEmail = document.getElementById('confirm-email').value;
-            var password = document.getElementById('signup-password').value;
-            var confirmPassword = document.getElementById('confirm-password').value;
-
-            if (email !== confirmEmail) {
-                alert("Emails do not match.");
-                return false;
-            }
-
-            if (password !== confirmPassword) {
-                alert("Passwords do not match.");
-                return false;
-            }
-
-            return true;
-        }
-    </script>
 </body>
 
 </html>
