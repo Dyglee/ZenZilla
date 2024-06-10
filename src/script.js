@@ -119,3 +119,21 @@ function savePreferences() {
     // I will replace this with an actual API call to save preferences
     // Example: fetch('/api/savePreferences', { method: 'POST', body: JSON.stringify(preferences) });
 }
+
+
+
+// Sessions logic 
+
+function startSessions() {
+    const numSessions = document.getElementById('num-sessions').value;
+    const timeBetweenSessions = document.getElementById('time-between-sessions').value;
+
+    const sessionsConfig = {
+        numSessions: numSessions,
+        timeBetweenSessions: timeBetweenSessions
+    };
+
+    console.log('Sessions started with config:', sessionsConfig);
+    // I will replace this with an actual function to start sessions
+    // Example: startSessionTimer(sessionsConfig);
+}

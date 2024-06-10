@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Preferences</title>
+    <title>Sessions</title>
     <script src="/src/script.js"></script>
     <link rel="icon" href="/public/images/logo.jpg" />
     <link rel="stylesheet" href="/styles/style.css">
@@ -27,35 +27,20 @@
                 <img class="nav-logo" src="/public/images/logo.jpg" alt="Logo">
             </div>
         </nav>
-        <h1>Preferences</h1>
+        <h1>Sessions Setup</h1>
 
-
-
-        <section class="preference-section">
-            <h2>Notifications</h2>
-            <label class="switch">
-                <input type="checkbox" id="notifications-toggle">
-                <span class="slider round"></span>
-            </label>
+        <section class="session-setup-section">
+            <h2>Number of Sessions per Day</h2>
+            <input type="number" id="num-sessions" min="1" max="10" value="1">
         </section>
 
-        <section class="preference-section">
-            <h2>Session Duration</h2>
-            <select id="session-duration">
-                <option value="5">5 minutes</option>
-                <option value="10">10 minutes</option>
-                <option value="15">15 minutes</option>
-                <option value="20">20 minutes</option>
-                <option value="30">30 minutes</option>
-            </select>
+        <section class="session-setup-section">
+            <h2>Time Between Sessions (minutes)</h2>
+            <input type="number" id="time-between-sessions" min="5" max="180" value="60">
         </section>
-        <section class="preference-section">
-            <h2>Session Background</h2>
-            <div class="background-options" id="background-options">
-                
-            </div>
-        </section>
-        <button class="save" onclick="savePreferences()">Save Preferences</button>
+
+        <button onclick="startSessions()">Start Session</button>
+    </div>
 
 </body>
 
