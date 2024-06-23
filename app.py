@@ -1,5 +1,5 @@
-# app.py
 import logging
+import json  # Import the json module
 from flask import Flask, render_template, request, session, redirect, url_for, jsonify
 from flask_session import Session
 from flask_socketio import SocketIO
@@ -93,6 +93,23 @@ def current_user():
         user = User.query.get(user_id)
         return jsonify({'id': user.id, 'username': user.username, 'email': user.email}), 200
     return jsonify({'error': 'Not authenticated'}), 401
+
+@app.route('/api/savePreferences', methods=['POST'])
+def save_preferences():
+    if 'user_id' not in session:
+        return jsonify({'error': 'Not authenticated'}), 401
+    
+    data = request.get_json()
+    user_id = session['user_id']
+    
+    user = User.query.get(user_id)
+    if not user:
+        return jsonify({'error': 'User not found'}), 404
+
+    user.preferences = json.dumps(data)  # Store preferences as JSON string
+    db.session.commit()
+    
+    return jsonify({'message': 'Preferences saved successfully'}), 200
 
 if __name__ == '__main__':
     socketio.run(app, debug=True)

@@ -137,3 +137,35 @@ nav {
     background-color: #f44336;
     color: white;
 }
+/*****************************      preferecens     **************************/
+
+.background-options{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.background-options label {
+    position: relative;
+}
+
+.background-options input[type="radio"] {
+    display: none;
+}
+
+.background-options .background-image {
+    width: 180px;
+    height: 120px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease, border 0.3s ease;
+}
+
+.background-options input[type="radio"]:checked + .background-image {
+    transform: scale(1.01);
+    filter: brightness(80%);
+    border: 2px solid black;
+}
+.switch{
+    display: flex;
+}
