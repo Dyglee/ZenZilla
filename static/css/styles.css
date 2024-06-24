@@ -166,6 +166,18 @@ nav {
     filter: brightness(80%);
     border: 2px solid black;
 }
-.switch{
+.notifications{
     display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.save {
+    padding: 1rem;
+    height: 3rem;
+    border-radius: 5px;
+    border: none;
+    margin-top: 15px;
+    color: white;
+    background-color: red;
+    cursor: pointer;
 }

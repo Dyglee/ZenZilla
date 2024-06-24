@@ -44,6 +44,24 @@ def preferences():
 def sessions():
     return render_template('sessions.html')
 
+@app.route('/meditating')
+@login_required
+def meditating():
+    return render_template('meditating.html')
+
+@app.route('/api/getPreferences', methods=['GET'])
+def get_preferences():
+    if 'user_id' not in session:
+        return jsonify({'error': 'Not authenticated'}), 401
+
+    user_id = session['user_id']
+    user = User.query.get(user_id)
+    if not user or not user.preferences:
+        return jsonify({'error': 'Preferences not found'}), 404
+
+    preferences = json.loads(user.preferences)
+    return jsonify(preferences), 200
+
 @app.route('/api/signup', methods=['POST'])
 def signup():
     try:

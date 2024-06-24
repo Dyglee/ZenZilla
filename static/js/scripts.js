@@ -221,3 +221,14 @@ function savePreferences() {
         alert('Failed to save preferences.');
     });
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    fetch('/api/getPreferences')
+        .then(response => response.json())
+        .then(data => {
+            if (data.background) {
+                document.querySelector('.hero-section').style.backgroundImage = `url('/static/images/${data.background}')`;
+            }
+        })
+        .catch(error => console.error('Error loading preferences:', error));
+});

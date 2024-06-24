@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meditating</title>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}" defer></script>
+    <link rel="icon" href="{{ url_for('static', filename='images/logo.jpg') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <div class="nav-left">
+            </div>
+            <div class="nav-right">
+                <img class="nav-logo" src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo">
+            </div>
+        </nav>
+        <section class="hero-section">
+            
+        </section>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('/api/getPreferences')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.background) {
+                        document.querySelector('.hero-section').style.backgroundImage = `url('/static/images/${data.background}')`;
+                    }
+                })
+                .catch(error => console.error('Error loading preferences:', error));
+        });
+    </script>
+</body>
+
+</html>
