@@ -22,11 +22,13 @@
                 <img class="nav-logo" src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo">
             </div>
         </nav>
-        <section class="hero-section">
-            <img class="sound-gif" src="{{ url_for('static', filename='images/sound.gif') }}" alt="">
-            <audio controls autoplay loop>
-                <source src="{{ url_for('static', filename='/audio/music.mp3') }}" type="audio/mpeg">
-              </audio>
+        <section class="hero-section" id="hero-section">
+            <button id="start-button">Start Meditation</button>
+            <img class="sound-gif" src="{{ url_for('static', filename='images/sound.gif') }}" alt="" style="display:none;">
+            <audio id="meditation-audio" style="display:none;">
+                <source src="{{ url_for('static', filename='audio/music.mp3') }}" type="audio/mpeg">
+            </audio>
+            <div id="timer" class="timer"></div>
         </section>
     </div>
     <script>
@@ -37,11 +39,50 @@
                     if (data.background) {
                         document.querySelector('.hero-section').style.backgroundImage = `url('/static/images/${data.background}')`;
                     }
+                    const duration = data.duration ? data.duration * 60000 : 60000; // default 1 minute
+                    document.getElementById('start-button').addEventListener('click', function() {
+                        startMeditation(duration);
+                    });
                 })
                 .catch(error => console.error('Error loading preferences:', error));
         });
-    </script>
 
+        function startMeditation(duration) {
+            const gif = document.querySelector('.sound-gif');
+            const audio = document.getElementById('meditation-audio');
+            const startButton = document.getElementById('start-button');
+            const timer = document.getElementById('timer');
+
+            gif.style.display = 'block';
+            audio.style.display = 'block';
+            audio.volume = 0.5; 
+            audio.play();
+            startButton.style.display = 'none';
+
+            let remainingTime = duration / 1000; // convert to seconds
+            updateTimer(remainingTime);
+            const interval = setInterval(() => {
+                remainingTime--;
+                updateTimer(remainingTime);
+                if (remainingTime <= 0) {
+                    clearInterval(interval);
+                    gif.style.display = 'none';
+                    audio.pause();
+                    audio.currentTime = 0;
+                    audio.style.display = 'none';
+                    startButton.style.display = 'block';
+                    timer.textContent = '';
+                }
+            }, 1000);
+        }
+
+        function updateTimer(seconds) {
+            const timer = document.getElementById('timer');
+            const minutes = Math.floor(seconds / 60);
+            const remainingSeconds = seconds % 60;
+            timer.textContent = `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+        }
+    </script>
 </body>
 
 </html>
