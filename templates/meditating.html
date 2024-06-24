@@ -23,7 +23,10 @@
             </div>
         </nav>
         <section class="hero-section">
-            
+            <img class="sound-gif" src="{{ url_for('static', filename='images/sound.gif') }}" alt="">
+            <audio controls autoplay loop>
+                <source src="{{ url_for('static', filename='/audio/music.mp3') }}" type="audio/mpeg">
+              </audio>
         </section>
     </div>
     <script>
@@ -38,6 +41,7 @@
                 .catch(error => console.error('Error loading preferences:', error));
         });
     </script>
+
 </body>
 
 </html>

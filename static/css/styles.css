@@ -181,3 +181,17 @@ nav {
     background-color: red;
     cursor: pointer;
 }
+
+
+/******************************* meditating **********************************/
+
+.hero-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.sound-gif{
+    width: 20%;
+    height: 10%;
+}
