@@ -42,9 +42,10 @@ nav {
 
 /**************************** Hero Section **************************************/
 
-.hero-section {
+.hero-section-home {
     display: flex;
     justify-content: center;
+    align-items: center;
     height: 80vh;
     filter: brightness(80%);
     background-image: url(/static/images/Ocean-Background.jpg);
@@ -54,8 +55,6 @@ nav {
 
 .session-button {
     font-size: 1.5rem;
-    position: absolute;
-    top: 80%;
     padding: 1.5rem 4rem;
     border-radius: 15px;
     border: none;
@@ -190,6 +189,13 @@ nav {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    filter: brightness(80%);
+    background-size: cover;
+    border-radius: 1rem;
 }
 .sound-gif{
     width: 20%;
@@ -222,8 +228,8 @@ nav {
     border-radius: 38px;
 }
 #start-button{
-    padding: 2.5rem;
-    border-radius: 5px;
+    padding: 2rem;
+    border-radius: 15px;
     border: none;
     margin-top: 15px;
     color: white;

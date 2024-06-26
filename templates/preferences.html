@@ -19,7 +19,6 @@
             <div class="nav-left">
                 <a href="/home">Home</a>
                 <a href="/preferences">Preferences Management</a>
-                <a href="/sessions">Sessions Setup</a>
             </div>
             <div class="nav-right">
                 <img class="nav-logo" src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo">
@@ -39,7 +38,6 @@
                 <input type="checkbox" id="notifications-toggle">
                 <span class="slider"></span>
             </label>
-
         </div>
         <div class="preference-section">
             <label for="session-duration">
@@ -47,8 +45,20 @@
             </label>
             <input type="number" id="session-duration" min="1" max="30">
         </div>
+        <div class="preference-section">
+            <label for="num-sessions">
+                <h2>Number of Sessions per Day:</h2>
+            </label>
+            <input type="number" id="num-sessions" min="1" max="10" value="2">
+        </div>
+        <div class="preference-section">
+            <label for="interval-between-sessions">
+                <h2>Time Interval Between Sessions (hours):</h2>
+            </label>
+            <input type="number" id="interval-between-sessions" min="1" max="24" value="5">
+        </div>
         <button class="save" onclick="savePreferences()">Save Preferences</button>
-
+    </div>
 </body>
 
 </html>

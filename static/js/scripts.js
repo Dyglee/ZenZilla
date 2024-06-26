@@ -126,6 +126,11 @@ function loadBackgroundOptions() {
     const imagesPath = '/static/images/';
     const backgroundOptionsContainer = document.getElementById('background-options');
 
+    if (!backgroundOptionsContainer) {
+        console.error('Element with ID background-options not found.');
+        return;
+    }
+
     const backgroundImages = [
         'background1.jpg',
         'background2.jpg',
