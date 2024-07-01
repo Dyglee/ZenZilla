@@ -25,6 +25,8 @@
         </nav>
         <section class="hero-section" id="hero-section">
             <button id="start-button">Start Meditation</button>
+            <button id="pause-button" style="display:none;">Pause Meditation</button>
+            <button id="resume-button" style="display:none;">Resume Meditation</button>
             <img class="sound-gif" src="{{ url_for('static', filename='images/sound.gif') }}" alt="" style="display:none;">
             <audio id="meditation-audio" style="display:none;">
                 <source src="{{ url_for('static', filename='audio/music.mp3') }}" type="audio/mpeg">
@@ -48,10 +50,16 @@
                 .catch(error => console.error('Error loading preferences:', error));
         });
 
+        let remainingTime;
+        let interval;
+        let paused = false;
+        
         function startMeditation(duration) {
             const gif = document.querySelector('.sound-gif');
             const audio = document.getElementById('meditation-audio');
             const startButton = document.getElementById('start-button');
+            const pauseButton = document.getElementById('pause-button');
+            const resumeButton = document.getElementById('resume-button');
             const timer = document.getElementById('timer');
 
             gif.style.display = 'block';
@@ -59,22 +67,42 @@
             audio.volume = 0.5; 
             audio.play();
             startButton.style.display = 'none';
+            pauseButton.style.display = 'block';
 
-            let remainingTime = duration / 1000; // convert to seconds
+            remainingTime = duration / 1000; // convert to seconds
             updateTimer(remainingTime);
-            const interval = setInterval(() => {
-                remainingTime--;
-                updateTimer(remainingTime);
-                if (remainingTime <= 0) {
-                    clearInterval(interval);
-                    gif.style.display = 'none';
-                    audio.pause();
-                    audio.currentTime = 0;
-                    audio.style.display = 'none';
-                    startButton.style.display = 'block';
-                    timer.textContent = '';
+            interval = setInterval(() => {
+                if (!paused) {
+                    remainingTime--;
+                    updateTimer(remainingTime);
+                    if (remainingTime <= 0) {
+                        clearInterval(interval);
+                        gif.style.display = 'none';
+                        audio.pause();
+                        audio.currentTime = 0;
+                        audio.style.display = 'none';
+                        startButton.style.display = 'block';
+                        pauseButton.style.display = 'none';
+                        timer.textContent = '';
+                    }
                 }
             }, 1000);
+            
+            pauseButton.addEventListener('click', function() {
+                paused = true;
+                audio.pause();
+                pauseButton.style.display = 'none';
+                resumeButton.style.display = 'block';
+                gif.style.display = 'none'
+            });
+
+            resumeButton.addEventListener('click', function() {
+                paused = false;
+                audio.play();
+                pauseButton.style.display = 'block';
+                resumeButton.style.display = 'none';
+                gif.style.display = 'block'
+            });
         }
 
         function updateTimer(seconds) {
