@@ -38,6 +38,9 @@ gunicorn==20.1.0
 Flask-Migrate
 eventlet
 psycopg2-binary
+```
+
+
 
 ## Usage
 
