@@ -1,0 +1,28 @@
+# Virtual environment directories
+.venv/
+venv/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Environment variable files
+.env
+.flaskenv
+
+# Pytest cache
+.pytest_cache/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Log files
+*.log
+
+# SQLite database files
+*.sqlite3
+
+# Miscellaneous
+*.pdb
+*.pid
+*.gz
