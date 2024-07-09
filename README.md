@@ -1,8 +1,13 @@
 # ZenZilla Meditation App
 
-## Overview
+## Introduction
 
 ZenZilla is a web-based application designed to help users practice mindfulness and meditation. The app allows users to create accounts, set their preferences for meditation sessions, and track their meditation history. It provides guided sessions with background music and customizable session durations.
+
+Linkedin : https://www.linkedin.com/in/yassine-moussafir-894b67287/
+Website : https://zenzilla.onrender.com
+blog artice : https://medium.com/@yassinemoussafir31/portfolio-project-zenzilla-130aaa56a9c1
+
 
 ## Features
 
@@ -108,3 +113,7 @@ psycopg2-binary
 ## Contributing
 
 Contributions to ZenZilla are welcome! Please fork the repository and submit pull requests with your improvements.
+
+## Licensing
+
+This project is licensed under the MIT License.
